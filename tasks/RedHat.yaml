@@ -1,0 +1,19 @@
+---
+    - name: create epel.repo
+      template: src=utils/templates/epel-es.repo dest=/etc/yum.repos.d/epel.repo
+
+    - name: update repositories cache and install openvpn package
+      yum: name=openvpn enablerepo=epel state=latest
+
+    - name: download easy-rsa
+      get_url: url=https://github.com/downloads/OpenVPN/easy-rsa/easy-rsa-2.2.0_master.tar.gz dest=/tmp/easy-rsa.tar.gz
+
+    - name: decompress easy-rsa
+      command: tar -zxvf easy-rsa.tar.gz chdir=/tmp/
+
+    - name: copy rsa files to the work directory
+      command: cp -R /tmp/easy-rsa-2.2.0_master/easy-rsa/ /etc/openvpn/
+
+    - name: copy the sample file of server configuration
+      command: cp -R /usr/share/doc/openvpn-2.3.2/sample/sample-config-files /etc/openvpn/ creates=/etc/openvpn/server.conf
+
