@@ -1,6 +1,6 @@
 ---
-    - name: create epel.repo
-      template: src=utils/templates/epel-es.repo dest=/etc/yum.repos.d/epel.repo
+    - name: Install EPEL repo
+      yum: name=epel-release
 
     - name: update repositories cache and install openvpn package
       yum: name=openvpn enablerepo=epel state=latest
