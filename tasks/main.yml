@@ -2,5 +2,14 @@
     - name: Include "{{ansible_os_family}}" OpenVPN tasks
       include: "{{ansible_os_family}}.yaml"
 
-    - name: Include "{{openvpn_type_of_node}}" mesos recipe
+    - name: download easy-rsa
+      get_url: url=https://github.com/downloads/OpenVPN/easy-rsa/easy-rsa-2.2.0_master.tar.gz dest=/tmp/easy-rsa.tar.gz validate_certs=False
+
+    - name: decompress easy-rsa
+      unarchive: src=/tmp/easy-rsa.tar.gz dest=/tmp creates=/tmp/easy-rsa-2.2.0_master
+
+    - name: copy rsa files to the work directory
+      command: cp -R /tmp/easy-rsa-2.2.0_master/easy-rsa/ /etc/openvpn/ creates=/etc/openvpn/easy-rsa
+
+    - name: Include "{{openvpn_type_of_node}}" OpenVPN recipe
       include: "{{openvpn_type_of_node}}.yaml"
