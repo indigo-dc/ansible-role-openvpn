@@ -5,6 +5,3 @@
     - name: update repositories cache and install openvpn package
       yum: name=openvpn enablerepo=epel state=latest
 
-    - name: copy the sample file of server configuration
-      command: cp -R /usr/share/doc/openvpn-2.3.14/sample/sample-config-files /etc/openvpn/ creates=/etc/openvpn/server.conf
-

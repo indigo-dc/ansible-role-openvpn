@@ -2,6 +2,12 @@
     - name: Include "{{ansible_os_family}}" OpenVPN tasks
       include: "{{ansible_os_family}}.yaml"
 
+    - name: copy the sample file of server configuration
+      copy: src=server.conf.gz dest=/etc/openvpn/server.conf
+
+    - name: copy the sample file of server configuration
+      copy: src=client.conf dest=/etc/openvpn/client.conf
+
     - name: download easy-rsa
       get_url: url=https://build.openvpn.net/downloads/releases/easy-rsa-2.2.0_master.tar.gz dest=/tmp/easy-rsa.tar.gz validate_certs=False
 

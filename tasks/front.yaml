@@ -43,12 +43,6 @@
     - name: create Diffie Hellman certificate
       shell: . ./vars;./build-dh chdir=/etc/openvpn/easy-rsa/2.0/ creates=/etc/openvpn/easy-rsa/2.0/keys/dh1024.pem
 
-    - name: copy server.conf to the work directory
-      local_action: copy src=/etc/openvpn/sample-config-files/server.conf dest=/etc/openvpn/
-
-    - name: copy client.conf to the work directory
-      local_action: copy src=/etc/openvpn/sample-config-files/client.conf dest=/etc/openvpn/
-
     - name: indicate where is the ca.crt file in server.conf
       lineinfile: dest=/etc/openvpn/server.conf regexp='ca ca.crt' line='ca /etc/openvpn/easy-rsa/2.0/keys/ca.crt' state=present
 
