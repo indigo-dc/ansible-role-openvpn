@@ -66,7 +66,7 @@
 
     - name: activate user nobody in server.conf
       lineinfile: dest=/etc/openvpn/server.conf regexp=';user nobody' line='user nobody' state=present
-	  
+
     - name: activate group nogroup in server.conf
       lineinfile: dest=/etc/openvpn/server.conf regexp=';group nogroup' line='group nogroup' state=present
       when: ansible_os_family == "Debian"

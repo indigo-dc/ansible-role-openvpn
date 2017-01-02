@@ -3,7 +3,10 @@
       apt: pkg=openvpn update_cache=yes cache_valid_time=3600
 
     - name: copy the sample file of server configuration
-      command: cp -R /usr/share/doc/openvpn/examples/sample-config-files/ /etc/openvpn/ creates=/etc/openvpn/server.conf
+      copy: src=/usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz dest=/etc/openvpn/server.conf.gz
+
+    - name: copy the sample file of server configuration
+      copy: src=/usr/share/doc/openvpn/examples/sample-config-files/client.conf dest=/etc/openvpn/client.conf
 
     - name: decompress server.conf file
-      command: gzip -d server.conf.gz chdir=/etc/openvpn/sample-config-files/ creates=/etc/openvpn/server.conf
+      command: gzip -d /etc/openvpn/server.conf.gz creates=/etc/openvpn/server.conf
