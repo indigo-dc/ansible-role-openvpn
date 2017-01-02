@@ -1,9 +1,9 @@
 ---
     - name: update repositories cache and install openvpn package
-      apt: pkg=openvpn update_cache=yes cache_valid_time=3600
+      apt: pkg=openvpn,easy-rsa update_cache=yes cache_valid_time=3600
 
     - name: copy rsa files to the work directory
-      command: cp -R /usr/share/doc/openvpn/examples/easy-rsa/ /etc/openvpn/ creates=/etc/openvpn/easy-rsa
+      command: cp -R /usr/share/easy-rsa /etc/openvpn/ creates=/etc/openvpn/easy-rsa
 
     - name: copy the sample file of server configuration
       command: cp -R /usr/share/doc/openvpn/examples/sample-config-files/ /etc/openvpn/ creates=/etc/openvpn/server.conf
