@@ -3,5 +3,5 @@
       yum: name=epel-release
 
     - name: update repositories cache and install openvpn package
-      yum: name=openvpn enablerepo=epel state=latest
+      yum: name=openvpn,openssl enablerepo=epel state=latest
 
