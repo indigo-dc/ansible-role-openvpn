@@ -3,7 +3,7 @@
       include: "{{ansible_os_family}}.yaml"
 
     - name: download easy-rsa
-      get_url: url=https://github.com/downloads/OpenVPN/easy-rsa/easy-rsa-2.2.0_master.tar.gz dest=/tmp/easy-rsa.tar.gz validate_certs=False
+      get_url: url=https://build.openvpn.net/downloads/releases/easy-rsa-2.2.0_master.tar.gz dest=/tmp/easy-rsa.tar.gz validate_certs=False
 
     - name: decompress easy-rsa
       unarchive: src=/tmp/easy-rsa.tar.gz dest=/tmp creates=/tmp/easy-rsa-2.2.0_master
