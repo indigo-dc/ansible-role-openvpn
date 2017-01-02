@@ -3,7 +3,7 @@
       include: "{{ansible_os_family}}.yaml"
 
     - name: copy the sample file of server configuration
-      copy: src=server.conf.gz dest=/etc/openvpn/server.conf
+      copy: src=server.conf dest=/etc/openvpn/server.conf
 
     - name: copy the sample file of server configuration
       copy: src=client.conf dest=/etc/openvpn/client.conf
