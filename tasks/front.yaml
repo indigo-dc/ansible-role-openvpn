@@ -1,5 +1,5 @@
-    - name: change hostname
-      shell: hostname {{IM_MASTER_FQDN}}-vpn
+   # - name: change hostname
+   #   shell: hostname {{IM_MASTER_FQDN}}-vpn
 
     - name: update KEY_COUNTRY value
       lineinfile: dest=/etc/openvpn/easy-rsa/2.0/vars regexp='export KEY_COUNTRY="US"' line='export KEY_COUNTRY="ES"' state=present
