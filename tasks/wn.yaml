@@ -4,7 +4,7 @@
     - include: sudo_copy.yml src=/etc/openvpn/easy-rsa/2.0/keys/client.key dest=/etc/openvpn/client.key mode="0600" owner=root group=root
  
     # Copy the config file
-    - include: sudo_copy.yml src=/etc/openvpn/client.conf dest=/etc/openvpn/client.conf mode="0644" owner=root group=root
+    - copy: src=/etc/openvpn/client.conf dest=/etc/openvpn/client.conf mode="0644" owner=root group=root
 
     - name: execute the vpn client
       command: openvpn --config client.conf --daemon --log openvpn_client.log  chdir=/etc/openvpn/ creates=/etc/openvpn/openvpn_client.log
