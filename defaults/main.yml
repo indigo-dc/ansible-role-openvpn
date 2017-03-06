@@ -1,3 +1,4 @@
 ---
 # Type of node to install: front or wn
 openvpn_type_of_node: "front"
+openvpn_frontname: "slurmserver"

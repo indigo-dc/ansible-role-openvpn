@@ -6,6 +6,13 @@ OpenVPN Role
 
 Ansible role to install OpenVPN and deploy hybrid clusters with EC3.
 
+Role Variables
+--------------
+
+The variables that can be passed to this role and a brief description about them are as follows.
+
+	openvpn_type_of_node: "front"
+	openvpn_frontname: "slurmserver"
 
 Example Playbook
 ----------------
