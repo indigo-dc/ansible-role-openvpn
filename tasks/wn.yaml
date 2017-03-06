@@ -16,4 +16,4 @@
       register: wn_vpn_ip
     - shell: hostname | cut -d "." -f 1
       register: wn_hostname
-    - local_action: shell sed -i "/{{wn_hostname}}.localdomain/ s/.*/{{wn_vpn_ip}} {{wn_hostname}}.localdomain {{wn_hostname}}/g" /etc/hosts
+    - local_action: shell sed -i "/{{wn_hostname.stdout}}.localdomain/ s/.*/{{wn_vpn_ip.stdout}} {{wn_hostname.stdout}}.localdomain {{wn_hostname.stdout}}/g" /etc/hosts
