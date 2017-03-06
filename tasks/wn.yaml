@@ -12,7 +12,7 @@
     # Manage /etc/hosts of WN and FE
     - name: manage /etc/hosts
       shell: sed -i "/{{openvpn_frontname}}.localdomain/ s/.*/10.8.0.1 {{openvpn_frontname}}.localdomain {{openvpn_frontname}}/g" /etc/hosts
-    - shell: /sbin/ifconfig tun0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'
+    - shell: ifconfig tun0 | sed -n '/inet addr/s/.*addr.\([^ ]*\) .*/\1/p'
       register: wn_vpn_ip
     - shell: hostname | cut -d "." -f 1
       register: wn_hostname
