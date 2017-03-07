@@ -4,7 +4,7 @@
 OpenVPN Role
 ============
 
-Ansible role to install OpenVPN and deploy hybrid clusters with EC3.
+Ansible role to install OpenVPN to enable deploying hybrid elastic clusters.
 
 Role Variables
 --------------
@@ -19,12 +19,12 @@ Example Playbook
 ```
   - hosts: server
   roles:
-  - { role: 'grycap.openvpn', openvpn_type_of_node: "front" }
+  - { role: 'indigo-dc.openvpn', openvpn_type_of_node: "front" }
 ```
 ```
   - hosts: client
   roles:
-  - { role: 'grycap.openvpn', openvpn_type_of_node: "wn" }
+  - { role: 'indigo-dc.openvpn', openvpn_type_of_node: "wn" }
 ```
 
 Contributing to the role
