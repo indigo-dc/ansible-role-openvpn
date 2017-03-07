@@ -11,9 +11,12 @@ Role Variables
 
 The variables that can be passed to this role and a brief description about them are as follows.
 
+	# Type of the node: front or wn
 	openvpn_type_of_node: "front"
+	# Hostname of the front node
 	openvpn_frontname: "slurmserver"
-	manage_etc_hosts: "true"
+	# Flag to specify if the wn role will manage the /etc/hosts file to set the VPN net ips
+	manage_etc_hosts: true
 
 Example Playbook
 ----------------
