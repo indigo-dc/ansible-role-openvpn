@@ -13,6 +13,9 @@
       command: openvpn --config client.conf --daemon --log openvpn_client.log  chdir=/etc/openvpn/ creates=/etc/openvpn/openvpn_client.log
   
     # Manage /etc/hosts of WN and FE  
+    - name: Refresh setup data to get new ansible_tun0 item
+      setup:
+      when: manage_etc_hosts == true
     - name: manage /etc/hosts
       lineinfile: dest=/etc/hosts regexp="{{openvpn_frontname}}.localdomain" line="10.8.0.1 {{openvpn_frontname}}.localdomain {{openvpn_frontname}}"
       when: manage_etc_hosts == true
