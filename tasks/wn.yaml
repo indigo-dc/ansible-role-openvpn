@@ -1,9 +1,10 @@
+    - name: Wait the OpenVPN server to start
+      wait_for: path=/etc/openvpn/openvpn-status.log
+      delegate_to: "{{openvpn_frontname}}"
+
     # Copy of the certificates
-    - local_action: wait_for path=/etc/openvpn/easy-rsa/2.0/keys/ca.crt timeout=120
     - include: sudo_copy.yml src=/etc/openvpn/easy-rsa/2.0/keys/ca.crt dest=/etc/openvpn/ca.crt mode="0644" owner=root group=root
-    - local_action: wait_for path=/etc/openvpn/easy-rsa/2.0/keys/client.crt timeout=60
     - include: sudo_copy.yml src=/etc/openvpn/easy-rsa/2.0/keys/client.crt dest=/etc/openvpn/client.crt mode="0644" owner=root group=root
-    - local_action: wait_for path=/etc/openvpn/easy-rsa/2.0/keys/client.key timeout=60
     - include: sudo_copy.yml src=/etc/openvpn/easy-rsa/2.0/keys/client.key dest=/etc/openvpn/client.key mode="0600" owner=root group=root
  
     # Copy the config file
