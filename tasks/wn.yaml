@@ -18,7 +18,7 @@
       setup:
       when: manage_etc_hosts == true
     - name: manage /etc/hosts
-      lineinfile: dest=/etc/hosts regexp="{{openvpn_frontname}}.localdomain" line="10.8.0.1 {{openvpn_frontname}}.localdomain {{openvpn_frontname}}"
+      lineinfile: dest=/etc/hosts regexp="{{openvpn_frontname}}.localdomain" line="{{openvpn_server_vpn_ip}} {{openvpn_frontname}}.localdomain {{openvpn_frontname}}"
       when: manage_etc_hosts == true
     - local_action: lineinfile dest=/etc/hosts regexp="{{ansible_hostname}}.localdomain" line="{{ansible_tun0.ipv4.address}} {{ansible_hostname}}.localdomain {{ansible_hostname}}"
       delegate_facts: True
