@@ -12,7 +12,7 @@
       get_url: url=https://build.openvpn.net/downloads/releases/easy-rsa-2.2.0_master.tar.gz dest=/tmp/easy-rsa.tar.gz validate_certs=False
 
     - name: decompress easy-rsa
-      unarchive: src=/tmp/easy-rsa.tar.gz dest=/tmp creates=/tmp/easy-rsa-2.2.0_master
+      unarchive: src=/tmp/easy-rsa.tar.gz dest=/tmp creates=/tmp/easy-rsa-2.2.0_master remote_src=yes
 
     - name: copy rsa files to the work directory
       command: cp -R /tmp/easy-rsa-2.2.0_master/easy-rsa/ /etc/openvpn/ creates=/etc/openvpn/easy-rsa
