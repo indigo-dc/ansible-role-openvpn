@@ -17,9 +17,9 @@
     - name: Refresh setup data to get new ansible_tun0 item
       setup:
       when: manage_etc_hosts == true
-    - name: manage /etc/hosts
-      lineinfile: dest=/etc/hosts regexp="{{openvpn_frontname}}.localdomain" line="{{openvpn_server_vpn_ip}} {{openvpn_frontname}}.localdomain {{openvpn_frontname}}"
-      when: manage_etc_hosts == true
-    - local_action: lineinfile dest=/etc/hosts regexp="{{ansible_hostname}}.localdomain" line="{{ansible_tun0.ipv4.address}} {{ansible_hostname}}.localdomain {{ansible_hostname}}"
+    - local_action: lineinfile dest=/etc/hosts regexp=".*{{ansible_hostname}}.localdomain.*$" line="{{ansible_tun0.ipv4.address}} {{ansible_hostname}}.localdomain {{ansible_hostname}}"
       delegate_facts: True
+      when: manage_etc_hosts == true
+    - name: manage /etc/hosts
+      lineinfile: dest=/etc/hosts regexp=".*{{openvpn_frontname}}.localdomain.*$" line="{{openvpn_server_vpn_ip}} {{openvpn_frontname}}.localdomain {{openvpn_frontname}}"
       when: manage_etc_hosts == true
